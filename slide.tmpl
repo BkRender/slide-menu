@@ -1,0 +1,102 @@
+<html>
+    <style type="text/css" id="#bkhead('mySlidingMenuCSS')">
+        .initialContainer {
+            -webkit-transition: all 500ms ease-in-out;            
+            position: absolute;
+            top: 0px !IMPORTANT;
+            text-align: center;
+            width: 100%;
+            opacity: 1;
+        } 
+
+        .finalContainer {
+            -webkit-transition: all 500ms ease-in-out;            
+            position: absolute;
+            top: 0px !IMPORTANT;
+            margin-left: 200px;
+            text-align: center;
+            width: 100%;
+            opacity: 0.3;
+            background-color: #CCCCCC;
+        } 
+
+        .initialState {
+            -webkit-transition: all 500ms ease-in-out;
+            margin-left: -200px;
+            opacity: 0.2;
+            width: 200px;
+        }
+
+        .finalState {
+            -webkit-transition: all 500ms ease-in-out;
+            background-color: #CCCCCC;
+            margin-left: 0px;
+            opacity: 1;
+            width: 200px;
+        }
+
+        #whole {
+            overflow-x: hidden !IMPORTANT;
+            overflow-y: visible !IMPORTANT;
+            position: relative;
+        }        
+    </style> 
+
+    <script type="text/javascript" src="direction.js" id="#bkhead('whichDirection')" />
+
+    <script type="text/javascript" id="#bkhead('mySlidingMenu')">
+
+        var i = 0; 
+        var wholeSection;
+        var mySlidingMenu;
+        var maintContainer;
+        
+        var touchStartX;
+        var touchEndX;
+        
+        document.ontouchstart = function(){
+            touchStartX = undefined;
+            touchEndX = undefined;
+        };        
+        
+        
+        var startingTheSlidingUp = function () {
+                                        wholeSection = document.getElementById('whole');            
+                                        mySlidingMenu = document.getElementById('mySlidingSection');
+                                        maintContainer = document.getElementById('maintContainer');
+
+                                        if (i == 1) {
+                                            gettingTheMenuOff();
+                                            i++;
+                                        } else if (i == 2) {        
+                                            gettingTheMenu();
+                                            i--;
+                                        }else {
+                                            i++;  
+                                        };   
+        };
+        
+        function gettingTheMenu() {
+            mySlidingMenu.className = "initialState";
+            maintContainer.className = "initialContainer";
+            settingMyWholeDivOffsetHeight();  
+        };
+        
+        function gettingTheMenuOff() {
+            mySlidingMenu.className = "finalState";
+            maintContainer.className = "finalContainer";
+            settingMyWholeDivOffsetHeight();                     
+        };
+        
+        var settingMyWholeDivOffsetHeight = function () {
+            wholeSection.style.height = maintContainer.offsetHeight + "px";
+        }
+
+        addEventListener('bkPageLoaded',startingTheSlidingUp, false);
+
+        addEventListener('bkPageLoaded',settingMyWholeDivOffsetHeight, false); 
+
+    </script>
+
+
+</html>
