@@ -1,0 +1,8 @@
+This project is having an initially hidden menu on the left side - Facebook style.
+Features:
+1. Menu (link list) is hidden on the left.
+2. User presses on "slide" button on top of the page.
+3. Menu is sliding from left to right (on 200 px width)
+4. Original content is pused to the right side and 200px width of the content is going outside of the screen on the right side.
+
+BkYannC
